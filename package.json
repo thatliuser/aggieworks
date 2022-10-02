@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "esbuild": "^0.15.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.8.4"
+  },
+  "name": "aggieworks",
+  "version": "1.0.0",
+  "description": "AggieWorks application",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.23",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6"
+  }
+}
