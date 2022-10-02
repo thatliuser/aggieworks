@@ -7,7 +7,7 @@
   },
   "name": "aggieworks",
   "version": "1.0.0",
-  "description": "AggieWorks application",
+  "description": "Aggieworks take-home project submission",
   "scripts": {
     "build": "node build.js"
   },
