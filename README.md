@@ -1,8 +1,10 @@
-# Aggieworks Take-Home Assignment
+# AggieWorks Take-Home Assignment
 A [React](https://reactjs.org/) web application written in [TypeScript](https://www.typescriptlang.org/) for the AggieWorks Fall 2022 application.
 
 # Quickstart
-If you would just like to see the web app itself, __FILL IN WHEN I SET IT UP LOL__
+If you would just like to see the web app:
+ - __FILL IN WHEN I SET IT UP LOL__ 
+
 If you would like to build the app yourself:
  - Clone this Git repository.
  - Run `npm install` to install the necessary dependencies.

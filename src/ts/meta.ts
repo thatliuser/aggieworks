@@ -1,5 +1,5 @@
 const symbols = {
-    name: "test"
+    name: "test",
 };
 
 export default symbols;
