@@ -1,0 +1,48 @@
+@keyframes fadein {
+    from {
+        background: rgba(0, 0, 0, 0%);
+        color: #ffffff00;
+    }
+
+    to {
+        background: rgba(0, 0, 0, 20%);
+        color: #ffffffff;
+    }
+}
+
+.centered {
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+
+.stats,
+.nums,
+.num {
+    border-radius: 10px;
+    animation: fadein 1s ease-out forwards;
+}
+
+.stats {
+    margin: 5vh;
+    padding: 10vh;
+}
+
+.nums {
+    margin: 5vh;
+    padding: 3vh;
+
+    display: flex;
+    overflow-x: scroll;
+}
+
+.num {
+    margin: 2vh;
+    padding: 3vh;
+    min-width: 15vh;
+}
+
+.error {
+    color: rgb(255, 251, 0);
+    text-shadow: var(--shadow);
+}

@@ -16,5 +16,7 @@ If you would like to build the app yourself:
  - [TypeScript](https://www.typescriptlang.org/)
  - [ESBuild](https://esbuild.github.io/)
  - [React](https://reactjs.org/)
+ - [Chart.js](https://www.chartjs.org/)
+ - [React-ChartJS-2](https://react-chartjs-2.js.org/)
 
 I'm not a big fan of dependencies, so I looked into the `create-react-app` workflow and tried to cut down on any packages I found unnecessary for a simple app like this. `create-react-app` uses [WebPack](https://webpack.js.org) to bundle packages, but I decided to use ESBuild mostly due to its philosophy of speed, and the fact that it is written in Go. Definitely some bias at play here.
