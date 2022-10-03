@@ -1,3 +1,5 @@
+@import "vars.css";
+
 @keyframes fadein {
     from {
         background: rgba(0, 0, 0, 0%);
