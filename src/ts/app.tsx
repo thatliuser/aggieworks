@@ -1,42 +1,51 @@
 import React, { useState, ChangeEvent, MouseEvent } from "react";
 
 import Button from "./button";
+import isEven from "./is-even";
+import Meta from "./meta";
+
+type Even = "even" | "odd";
 
 export default function App(): JSX.Element {
+    let [str, setStr] = useState("");
+    let [even, setEven] = useState<Even>("even");
     let [num, setNum] = useState(0);
-    let [even, setEven] = useState(true);
 
-    // TODO: Make this look and act not stupid
-    function onChange(event: ChangeEvent<HTMLInputElement>): void {
+    function changeNum(event: ChangeEvent<HTMLInputElement>): void {
         const value = event.target.value;
-        if (RegExp("^[0-9]+$").test(value)) {
-            setNum(parseInt(value));
+        /* I assume this is a pretty weird way of doing this,
+        * but it's concise-ish so I'm not willing to change it.
+        */
+        if (RegExp("^([1-9][0-9]*|[0-9]|)$").test(value)) {
+            setStr(value);
         }
     }
 
-    function onClick(event: MouseEvent<HTMLButtonElement>): void {
-        let req = new XMLHttpRequest();
-        req.open("GET", `https://api.isevenapi.xyz/api/iseven/${num}`);
-        req.onload = () => {
-            interface IsEven {
-                iseven: boolean,
-                ad: string,
-            }
-            let resp = JSON.parse(req.responseText) as IsEven;
-            console.log(resp.ad);
-            setEven(resp.iseven);
-        };
-        req.send();
+    function update(event: MouseEvent<HTMLButtonElement>): void {
+        if (str === "") {
+            alert("Enter a number!");
+            return;
+        }
+
+        const parsed = parseInt(str);
+        isEven(parsed).then((value) => {
+            setNum(parsed);
+            setEven(value.iseven ? "even" : "odd");
+        });
     }
 
     return (
         <React.StrictMode>
-            <div>
-                <label>Hello! Please type in a number below.</label>
-                <input type="number" placeholder="0" maxLength={10} value={num} onChange={onChange} />
-                <Button name="Test" callback={onClick} />
-                <br />
-                {num} is <b>{even ? "even" : "odd"}</b>
+            <h1>{Meta.name}</h1>
+            <div className="centered">
+                <input maxLength={6} value={str} placeholder="Your number" onChange={changeNum} />
+                <Button name="Go!" callback={update} />
+            </div>
+            <div className="centered">
+                <small>Brought to you by the <a href="https://isevenapi.xyz/" target="_blank">isEven API</a></small>
+            </div>
+            <div className="stats centered">
+                {num} is <b>{even}</b>
             </div>
         </React.StrictMode>
     );

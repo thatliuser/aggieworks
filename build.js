@@ -10,6 +10,7 @@ const Files = require("fs");
 
 function copyHTML() {
     Files.copyFile("src/html/index.html", "build/index.html", () => { });
+    Files.copyFile("src/css/index.css", "build/index.css", () => { });
 }
 
 function success() {
