@@ -6,21 +6,9 @@
 */
 
 const ESBuild = require("esbuild");
-const Files = require("fs");
-
-function copyFiles() {
-    Files.copyFile("src/html/index.html", "build/index.html", () => { });
-    for (const file of Files.readdirSync("src/css/")) {
-        Files.copyFile(`src/css/${file}`, `build/${file}`, () => { });
-    }
-    for (const file of Files.readdirSync("misc/")) {
-        Files.copyFile(`misc/${file}`, `build/${file}`, () => { });
-    }
-}
 
 function success() {
     console.log("Built!");
-    copyFiles();
 }
 
 function error() {
@@ -35,8 +23,17 @@ function main() {
                 err ? error() : success();
             }
         },
-        entryPoints: ["src/ts/index.tsx"],
-        outfile: "build/index.js",
+        loader: {
+            [".html"]: "copy",
+            [".ico"]: "copy",
+        },
+        entryPoints: [
+            "src/ts/index.tsx",
+            "src/html/index.html",
+            "src/css/index.css",
+            "misc/percent.ico",
+        ],
+        outdir: "build",
         minify: true,
     }).then(
         success,
