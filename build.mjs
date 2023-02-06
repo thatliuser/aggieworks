@@ -36,6 +36,7 @@ function main() {
         entryPoints: [
             "src/ts/index.tsx",
             "src/html/index.html",
+            "index.html",
             "misc/percent.ico",
         ],
         outdir: "build",
