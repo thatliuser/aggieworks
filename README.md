@@ -8,7 +8,7 @@ If you would just like to see the web app:
 If you would like to build the app yourself:
  - Clone this Git repository.
  - Run `npm install` to install the necessary dependencies.
- - Run `npm run build` to bundle the package. It usually runs in a watch loop, so use `Ctrl+C` to exit the script.
+ - Run `npm run build once` to bundle the package. To run a watch loop, use `npm run build` instead.
  - Open `build/index.html` in your browser.
  - Play around with it!
 
