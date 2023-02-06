@@ -1,0 +1,38 @@
+# Build the webpage to deploy to pages
+name: Build webpage
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    # NixOS >>
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - uses: actions/setup-node@v3.6.0
+      - run: npm install
+      - run: npm run build once
+      - uses: actions/upload-pages-artifact@v1.0.7
+        with:
+          path: "build/"
+
+  deploy:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/deploy-pages@v1.2.4
