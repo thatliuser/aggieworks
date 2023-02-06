@@ -5,24 +5,30 @@
 * a compile step while running the build script!
 */
 
-const ESBuild = require("esbuild");
+import * as esbuild from "esbuild";
 
 function success() {
     console.log("Built!");
 }
 
 function error() {
-    console.log("Build failed!");
+    console.error("Build failed!");
 }
 
 function main() {
-    ESBuild.build({
+    const arg = process.argv[2];
+    let watch = {
+        onRebuild: (err, result) => {
+            err ? error() : success();
+        }
+    };
+    if (arg == "once") {
+        watch = false;
+    }
+
+    esbuild.build({
         bundle: true,
-        watch: {
-            onRebuild: (err, result) => {
-                err ? error() : success();
-            }
-        },
+        watch: watch,
         loader: {
             [".html"]: "copy",
             [".ico"]: "copy",

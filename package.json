@@ -9,7 +9,7 @@
   "version": "1.0.0",
   "description": "AggieWorks take-home project submission",
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.mjs"
   },
   "devDependencies": {
     "@types/react": "^18.0.21",
